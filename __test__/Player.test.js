@@ -18,3 +18,22 @@ test('Creates a player object',() =>{
         expect.arrayContaining([expect.any(Object)])
     );
 });
+
+test("Gets player's stats as an object", () =>{
+    const player = new Player('Mau');
+
+    expect(player.getStats()).toHaveProperty('potion');
+    expect(player.getStats()).toHaveProperty('health');
+    expect(player.getStats()).toHaveProperty('strength');
+    expect(player.getStats()).toHaveProperty('agility');
+});
+
+test('gets inventory from player or retruns false',()=>{
+    const player = new Player('Mau');
+
+    expect(player.getInventory()).toEqual(expect.any(Array));
+
+    player.inventory = [];
+
+    expect(player.getInventory()).toEqual(false);
+});
